@@ -14,7 +14,7 @@ function Page() {
     }} className='mb-10'>
         <Button>Logout</Button>
     </form>
-    <Gamelist title='Borrowed Books' books={sampleBooks}
+    <Gamelist title='Borrowed Books' books={sampleBooks} />
     </>
   )
 }
