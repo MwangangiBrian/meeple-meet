@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z, ZodType } from 'zod';
+import { ZodType } from 'zod';
 import {
   DefaultValues,
   FieldValues,
@@ -55,7 +55,7 @@ const AuthForm = <T extends FieldValues>({
   return (
     <div className=" flex flex-col gap-4">
       <h1 className="text-2xl font-semibold text-white">
-        {isSignIn ? 'Welcome back to Meeple' : 'Create your account'}
+        {isSignIn ? 'Welcome back to Meeple ' : 'Create your account'}
       </h1>
       <p className="text-light-100">
         {isSignIn
@@ -66,7 +66,7 @@ const AuthForm = <T extends FieldValues>({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
-          className="space-y-6 w-4"
+          className="space-y-4"
         >
           {/* mapping over each field */}
           {Object.keys(defaultValues).map((field) => (
@@ -100,12 +100,12 @@ const AuthForm = <T extends FieldValues>({
       </Form>
 
       <p className="text-center text-base font-medium">
-        {isSignIn ? 'New to Meeple?' : 'Already have an account?'}
+        {isSignIn ? 'New to Meeple? ' : 'Already have an account?'}
         <Link
           href={isSignIn ? '/sign-up' : '/sign-in'}
           className="font-bold text-primary"
         >
-          {isSignIn ? 'Create an account' : 'Sign in'}
+          {isSignIn ? 'Create an account  ' : 'Sign in'}
         </Link>
       </p>
     </div>

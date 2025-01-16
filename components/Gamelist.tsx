@@ -7,7 +7,7 @@ interface Props {
   containerClassName?: string;
 }
 
-function Booklist({ title, books, containerClassName }: Props) {
+function Gamelist({ title, books, containerClassName }: Props) {
   return (
     <section className={containerClassName}>
       <h2 className="font-bebas-neue text-4xl text-light-100">{title}</h2>
@@ -21,4 +21,4 @@ function Booklist({ title, books, containerClassName }: Props) {
   );
 }
 
-export default Booklist;
+export default Gamelist;
