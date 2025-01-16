@@ -1,5 +1,5 @@
 import Booklist from "@/components/Gamelist";
-import BookOverview from "@/components/GameOverview";
+import GameOverview from "@/components/GameOverview";
 import { sampleBooks } from "@/constants";
 import { db } from "@/db/drizzle";
 import { users } from "@/db/schema";
@@ -11,7 +11,7 @@ const Home= async() =>{
 
   return (
   <>
-  <BookOverview { ...sampleBooks[0]} />
+  <GameOverview { ...sampleBooks[0]} />
 
   <Booklist 
   title = "Latest Games"
