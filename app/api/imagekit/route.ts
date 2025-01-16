@@ -7,6 +7,7 @@ const {
     imagekit: { publicKey, privateKey, urlEndpoint },
   },
 } = config;
+console.log(publicKey)
 
 const imagekit = new ImageKit({ publicKey, privateKey, urlEndpoint });
 
