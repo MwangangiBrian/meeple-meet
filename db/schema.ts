@@ -1,7 +1,5 @@
 import {
-  integer,
   text,
-  boolean,
   pgTable,
   uuid,
   date,

@@ -6,63 +6,73 @@ import Image from 'next/image';
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Session } from 'next-auth';
+import { Button } from './ui/button';
+import { ModeToggle } from './modeToggle';
 
 function Header({ session }: { session: Session | null }) {
   const pathname = usePathname();
 
   return (
-    <header className="px-4 lg:px-6 h-16 flex items-center border-b">
-      <Link className="flex items-center gap-2 font-bold text-xl" href={'/'}>
-        <Image src="/icons/logo.svg" alt="logo" width={40} height={40} />
-        Meeple
-      </Link>
-      <nav className="ml-auto flex gap-4 sm:gap-6">
-        <Link
-          className="text-sm font-medium hover:underline underline-offset-4"
-          href={'/'}
-        >
-          How It Works
-        </Link>
-        <Link
-          className={cn(
-            'text-sm font-medium hover:underline underline-offset-4',
-            pathname === '/games' ? 'text-light-200' : 'text-light-100'
+    <>
+      <header className="mx-auto w-[90%] justify-center sticky top-0 z-50  border-b-gray-400 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="mr-4 flex items-center  gap-4 justify-between">
+          <div className="container flex h-14 items-center">
+            <Link href={'/'} className="mr-6 flex items-center space-x-2">
+              <Image src="/icons/logo.svg" alt="logo" width={40} height={40} />
+              <span className="font-sans hidden font-extrabold sm:inline-block text-orange-600 text-lg">Meeple</span>
+            </Link>
+            <nav className="flex items-center space-x-6 text-sm font-medium">
+              <Link
+                href={'/games'}
+                className="transition-colors hover:text-foreground/80"
+              >
+                Browse Games
+              </Link>
+              <Link
+                href={'/'}
+                className="transition-colors hover:text-foreground/80"
+              >
+                How it Works
+              </Link>
+              <Link
+                href={'/'}
+                className="transition-colors hover:text-foreground/80"
+              >
+                Community
+              </Link>
+            </nav>
+          </div>
+          {session ? (
+            <Link href="#">
+              <Avatar>
+                {session.user?.image ? (
+                  <AvatarImage
+                    src={session.user.image}
+                    alt={session.user.name || 'User Avatar'}
+                  />
+                ) : (
+                  <AvatarFallback className="bg-cyan-100">
+                    {getInitials(session.user?.name || 'Guest')}
+                  </AvatarFallback>
+                )}
+              </Avatar>
+            </Link>
+          ) : (
+            <div className="flex flex-1 items-center justify-end space-x-2">
+              <nav className="flex items-center space-x-2">
+                <Button variant="ghost" asChild>
+                  <Link href={'/sign-in'}>Login</Link>
+                </Button>
+                <Button asChild>
+                  <Link href={'/sign-up'}>Sign Up</Link>
+                </Button>
+                <ModeToggle />
+              </nav>
+            </div>
           )}
-          href={'/games'}
-        >
-          Games
-        </Link>
-        <Link
-          className="text-sm font-medium hover:underline underline-offset-4"
-          href={'/community'}
-        >
-          Community
-        </Link>
-        {session ? (
-          <Link href="#">
-            <Avatar>
-              {session.user?.image ? (
-                <AvatarImage
-                  src={session.user.image}
-                  alt={session.user.name || 'User Avatar'}
-                />
-              ) : (
-                <AvatarFallback className="bg-cyan-100">
-                  {getInitials(session.user?.name || 'Guest')}
-                </AvatarFallback>
-              )}
-            </Avatar>
-          </Link>
-        ) : (
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4 bg-blue-500 text-white px-4 py-2 rounded"
-            href={'/sign-up'}
-          >
-            Sign Up
-          </Link>
-        )}
-      </nav>
-    </header>
+        </div>
+      </header>
+    </>
   );
 }
 

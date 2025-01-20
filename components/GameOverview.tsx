@@ -4,12 +4,13 @@ import { Button } from './ui/button';
 import GameCover from './GameCover';
 import { ArrowRight, Calendar, Dice5, Search } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import Link from 'next/link';
 
 const GameOverview = ({ color, coverURL }: Book) => {
   return (
     <>
       <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-primary/5 to-transparent">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 flex justify-center">
           <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
@@ -22,12 +23,16 @@ const GameOverview = ({ color, coverURL }: Book) => {
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <Link href="/sign-up">
                 <Button size="lg" className="inline-flex gap-2">
-                  Get Started <ArrowRight className="h-4 w-4" />
+                   Get Started <ArrowRight className="h-4 w-4" /> 
                 </Button>
+                   </Link>
+                <Link href="/games">
                 <Button size="lg" variant="outline">
                   Browse Games
                 </Button>
+                </Link>
               </div>
             </div>
 
@@ -52,7 +57,7 @@ const GameOverview = ({ color, coverURL }: Book) => {
         </div>
       </section>
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 flex justify-center">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
@@ -63,7 +68,7 @@ const GameOverview = ({ color, coverURL }: Book) => {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 mt-12">
+          <div className="mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 mt-12 flex justify-center">
             <Card className="relative overflow-hidden">
               <CardContent className="p-6 pt-8">
                 <Search className="h-12 w-12 mb-4 text-primary" />
@@ -98,7 +103,7 @@ const GameOverview = ({ color, coverURL }: Book) => {
         </div>
       </section>
       <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 flex justify-center">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Ready to Start Sharing?</h2>
