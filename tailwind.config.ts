@@ -17,6 +17,7 @@ export default {
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
+        mono: ['PT Sans', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',

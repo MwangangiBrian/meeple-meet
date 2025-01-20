@@ -1,7 +1,7 @@
 'use client';
-import { cn, getInitials } from '@/lib/utils';
+import { getInitials } from '@/lib/utils';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+// import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
@@ -10,7 +10,7 @@ import { Button } from './ui/button';
 import { ModeToggle } from './modeToggle';
 
 function Header({ session }: { session: Session | null }) {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
   return (
     <>
@@ -43,6 +43,8 @@ function Header({ session }: { session: Session | null }) {
             </nav>
           </div>
           {session ? (
+            <div>
+              <nav className="flex items-center space-x-6 text-sm font-medium">
             <Link href="#">
               <Avatar>
                 {session.user?.image ? (
@@ -57,6 +59,9 @@ function Header({ session }: { session: Session | null }) {
                 )}
               </Avatar>
             </Link>
+            <ModeToggle />
+            </nav>
+            </div>
           ) : (
             <div className="flex flex-1 items-center justify-end space-x-2">
               <nav className="flex items-center space-x-2">

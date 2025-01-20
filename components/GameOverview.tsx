@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { Button } from './ui/button';
 import GameCover from './GameCover';
 import { ArrowRight, Calendar, Dice5, Search } from 'lucide-react';
@@ -68,7 +67,7 @@ const GameOverview = ({ color, coverURL }: Book) => {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 mt-12 flex justify-center">
+          <div className="mx-auto gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 mt-12 flex justify-center">
             <Card className="relative overflow-hidden">
               <CardContent className="p-6 pt-8">
                 <Search className="h-12 w-12 mb-4 text-primary" />

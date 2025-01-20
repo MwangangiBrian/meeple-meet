@@ -12,8 +12,8 @@ import {
   Trophy,
   MessageSquare,
 } from 'lucide-react';
-import { db } from '@/db/drizzle';
-import { users } from '@/db/schema';
+// import { db } from '@/db/drizzle';
+// import { users } from '@/db/schema';
 
 const Home = async () => {
   // const result = await db.select().from(users)
@@ -21,7 +21,7 @@ const Home = async () => {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col items-center">
         {/* Hero Section */}
         <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
           <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
@@ -164,7 +164,6 @@ const Home = async () => {
           </div>
         </section>
 
-        {/* CTA Section */}
         <section className="container space-y-6 bg-slate-50 py-8 dark:bg-slate-900 md:py-12 lg:py-24">
           <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
             <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
