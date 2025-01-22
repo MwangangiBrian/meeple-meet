@@ -5,7 +5,7 @@ import { ArrowRight, Calendar, Dice5, Search } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
 
-const GameOverview = ({ color, coverURL }: Book) => {
+const GameOverview = ({ color, coverURL }: Game) => {
   return (
     <>
       <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-primary/5 to-transparent">

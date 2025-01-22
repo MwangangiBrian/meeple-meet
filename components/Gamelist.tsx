@@ -3,18 +3,18 @@ import GameCard from './GameCard';
 
 interface Props {
   title: string;
-  books: Book[];
+  games: Game[];
   containerClassName?: string;
 }
 
-function Gamelist({ title, books, containerClassName }: Props) {
+function Gamelist({ title, games , containerClassName }: Props) {
   return (
     <section className={containerClassName}>
       <h2 className=" text-4xl text-light-100">{title}</h2>
 
       <ul className="book-list">
-        {books.map((book) => (
-          <GameCard key={book.title} {...book} />
+        {games.map((game) => (
+          <GameCard key={game.title} {...game} />
         ))}
       </ul>
     </section>

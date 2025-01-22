@@ -1,4 +1,4 @@
-interface Book {
+interface Game {
   id: number;
   title: string;
   author: string;
@@ -11,7 +11,7 @@ interface Book {
   coverURL: string;
   video: string;
   summary: string;
-  isLoanedBook?: boolean;
+  isLoanedGame?: boolean;
 }
 
 
