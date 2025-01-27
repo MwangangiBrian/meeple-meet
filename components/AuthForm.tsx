@@ -26,7 +26,7 @@ import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { FIELD_NAMES, FIELD_TYPES } from '@/constants';
 import { useRouter } from 'next/navigation';
-import { Dices, Loader2, Mail, Lock } from 'lucide-react';
+import { Dices, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Header from './Header';
 
@@ -70,7 +70,7 @@ const AuthForm = <T extends FieldValues>({
 
   return (
     <>
-    <Header />
+    <Header session={null} />
       <div className="container relative flex h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Link
           href={isSignIn ? '/sign-up' : '/sign-in'}

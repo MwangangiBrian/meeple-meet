@@ -9,7 +9,7 @@ import { GamesStats } from "@/components/admin/games/GamesStats"
 import { GamesChart } from "@/components/admin/games/GamesChart"
 import { GamesTrending } from "@/components/admin/games/GamesTrending"
 import { Search, LayoutGrid, List, Plus } from "lucide-react"
-
+import Link from "next/link"
 export default function Page() {
   const [view, setView] = useState<"grid" | "list">("list")
 
@@ -20,10 +20,12 @@ export default function Page() {
           <h1 className="text-3xl font-bold tracking-tight">Games</h1>
           <p className="text-muted-foreground">Total 117 games, manage your game collection</p>
         </div>
-        <Button>
-          <Plus className="mr-2 h-4 w-4" />
-          Add New Game
-        </Button>
+        <Link href="/admin/games/new">
+          <Button>
+            <Plus className="mr-2 h-4 w-4" />
+            Add New Game
+          </Button>
+        </Link>
       </div>
 
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
