@@ -1,9 +1,134 @@
 {
-  "id": "63fedef5-0b2c-463a-8078-a61a045c9177",
+  "id": "df9788df-8ea5-43ed-b6bd-86d3656615b1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.games": {
+      "name": "games",
+      "schema": "",
+      "columns": {
+        "game_id": {
+          "name": "game_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "condition": {
+          "name": "condition",
+          "type": "game_condition",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "min_players": {
+          "name": "min_players",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "max_players": {
+          "name": "max_players",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "playing_time": {
+          "name": "playing_time",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "image_urls": {
+          "name": "image_urls",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "complexity_rating": {
+          "name": "complexity_rating",
+          "type": "numeric(3, 1)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_available": {
+          "name": "is_available",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": true
+        },
+        "lending_preference": {
+          "name": "lending_preference",
+          "type": "lending_preference",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "games_owner_id_users_id_fk": {
+          "name": "games_owner_id_users_id_fk",
+          "tableFrom": "games",
+          "tableTo": "users",
+          "columnsFrom": [
+            "owner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "games_game_id_unique": {
+          "name": "games_game_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "game_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.users": {
       "name": "users",
       "schema": "",
@@ -94,6 +219,27 @@
     }
   },
   "enums": {
+    "public.game_condition": {
+      "name": "game_condition",
+      "schema": "public",
+      "values": [
+        "NEW",
+        "USED",
+        "LIKE_NEW",
+        "GOOD",
+        "FAIR",
+        "POOR"
+      ]
+    },
+    "public.lending_preference": {
+      "name": "lending_preference",
+      "schema": "public",
+      "values": [
+        "LOCAL_ONLY",
+        "SHIPPING_OK",
+        "PICKUP_ONLY"
+      ]
+    },
     "public.role": {
       "name": "role",
       "schema": "public",

@@ -4,11 +4,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Dices, HelpCircle, LogOut } from 'lucide-react';
+import { HelpCircle, LogOut } from 'lucide-react';
 import { sidebarItems } from '@/constants';
 import { Avatar, AvatarFallback } from '@radix-ui/react-avatar';
 import { getInitials } from '@/lib/utils';
 import { Session } from 'next-auth';
+import Image from 'next/image';
 
 export function Sidebar({ session }: { session: Session }) {
   const pathname = usePathname();
@@ -17,8 +18,11 @@ export function Sidebar({ session }: { session: Session }) {
     <div className="flex h-screen w-auto flex-col border-r bg-background">
       <div className="flex h-14 items-center border-b px-4">
         <Link href="/admin" className="flex items-center gap-2 font-semibold">
-          <Dices className="h-6 w-6" />
-          <span className="hidden sm:block">Admin Panel</span>
+          <Image src={"/favicon.ico"} alt="logo" width={40} height={40}/>
+        <div className='flex-col hidden sm:block '>
+          <span>Meeple</span>
+          <span className="hidden sm:block text-xs text-muted-foreground font-normal">Admin Panel</span>
+          </div>
         </Link>
       </div>
       <div className="flex-1 overflow-auto py-4">
