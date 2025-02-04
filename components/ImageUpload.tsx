@@ -6,6 +6,7 @@ import { config } from '@/lib/config';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
+import { ImageUp } from 'lucide-react';
 
 const {
   env: {
@@ -52,7 +53,9 @@ const ImageUpload = ({
   value,
 }: Props) => {
   const ikUploadRef = useRef(null);
-  const [file, setFile] = useState<{ filePath: string } | null>(null);
+  const [file, setFile] = useState<{ filePath: string | null }>({
+    filePath: value ?? null,
+  });
   const [progress, setProgress] = useState(0);
 
   const styles = {
@@ -77,11 +80,10 @@ const ImageUpload = ({
     toast({
       title: `${type} upload success`,
       description: `Your ${type} has been uploaded successfully.`,
-      variant: 'success',
     });
   };
 
-  const onValidate = (file: file) => {
+  const onValidate = (file: File) => {
     if (type === 'image') {
       if (file.size > 10 * 1024 * 1024) {
         toast({
@@ -139,6 +141,7 @@ const ImageUpload = ({
             }
           }}
         >
+          <ImageUp />
           <p className={cn('text-base', styles.placeholder)}>{placeholder}</p>
 
           {file && (

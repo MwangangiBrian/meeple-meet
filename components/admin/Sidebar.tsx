@@ -15,7 +15,7 @@ export function Sidebar({ session }: { session: Session }) {
   const pathname = usePathname();
 
   return (
-    <div className="flex h-screen w-auto flex-col border-r bg-background">
+    <div className="flex h-screen w-auto flex-col border-r bg-background sticky top-0">
       <div className="flex h-14 items-center border-b px-4">
         <Link href="/admin" className="flex items-center gap-2 font-semibold">
           <Image src={"/favicon.ico"} alt="logo" width={40} height={40}/>

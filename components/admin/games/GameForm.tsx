@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
@@ -15,7 +14,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { gameSchema } from '@/constants/validations';
 import {
@@ -26,9 +24,10 @@ import {
   SelectTrigger,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import ImageUpload from '@/components/ImageUpload';
 
 interface Props extends Partial<Game> {
-  type: 'create' | 'edit';
+  type?: 'create' | 'edit';
 }
 
 const GameForm = ({ type, ...game }: Props) => {
@@ -43,7 +42,7 @@ const GameForm = ({ type, ...game }: Props) => {
       minPlayers: 1,
       maxPlayers: 1,
       playingTime: 1,
-      imageUrls: [],
+      imageUrls: '',
       complexityRating: 1,
       lendingPreference: 'LOCAL_ONLY',
     },
@@ -84,11 +83,12 @@ const GameForm = ({ type, ...game }: Props) => {
                 <FormLabel className="capitalize">Game Description</FormLabel>
                 <FormControl>
                   <Textarea
-              required
-              placeholder="Enter game description"
-              {...field} rows={10}
-              className="form-input h-24 resize-none"
-            />
+                    required
+                    placeholder="Enter game description"
+                    {...field}
+                    rows={10}
+                    className="form-input h-24 resize-none"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -241,11 +241,14 @@ const GameForm = ({ type, ...game }: Props) => {
               <FormItem className="flex flex-col">
                 <FormLabel className="capitalize">Photos</FormLabel>
                 <FormControl>
-                  <Input
-                    required
-                    placeholder="Game Photos"
-                    {...field}
-                    className="form-input"
+                  <ImageUpload
+                    type="image"
+                    accept="image/*"
+                    placeholder="Upload image"
+                    folder="meeple-meet"
+                    variant="dark"
+                    onFileChange={field.onChange}
+                    value={field.value}
                   />
                 </FormControl>
                 <FormMessage />
