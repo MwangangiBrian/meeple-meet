@@ -14,9 +14,21 @@ interface Game {
   isLoanedGame?: boolean;
 }
 
-
-interface AuthCredentials{
+interface AuthCredentials {
   userName: string;
-  email:string;
+  email: string;
   password: string;
+}
+
+interface GameParams {
+  title: string;
+  description: string;
+  condition: string;
+  minPlayers: number;
+  maxPlayers: number;
+  playingTime: number;
+  complexityRating: number;
+  lendingPreference: string;
+  imageUrls: string;
+  isAvailable: boolean;
 }
